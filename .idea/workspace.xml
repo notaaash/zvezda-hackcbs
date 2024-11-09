@@ -4,23 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c203dbbb-a8ec-4700-9be7-9107cc6aff3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/hackcbs.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_key.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/check.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/checkAvailability.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/get_live_train_status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/get_pnr_status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/get_train_btw_stations_page.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/trains_between_stations.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/api-utils.py" afterDir="false" />
+    <list default="true" id="c203dbbb-a8ec-4700-9be7-9107cc6aff3c" name="Changes" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +80,19 @@
       <option name="presentableId" value="Default" />
       <updated>1731136189197</updated>
     </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1731175962959</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731175962959</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
 </project>
