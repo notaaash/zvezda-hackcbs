@@ -74,22 +74,70 @@ def search_alternate():
 
 # Main App Logic
 def main():
+    st.logo('./utils/imagebg.jpg', size="large", link=None, icon_image='./utils/imagebg.jpg')
     st.title("zvezda portal")
+    st.header("<- please select the appropriate option from the sidebar")
+    tiger_ascii = """
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⠤⢤⡀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠋⠁⠀⠀⠀⠈⠙⢦⣄⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⢀⡼⠋⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⡀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠈⠑⢤⣀⠉⠙⠓⢦⣀⠀⠀⠀⠀⠀⠈⠻⣄⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠑⢦⣄⠈⠙⢦⡀⠀⠀⠀⠀⠈⠳
+    ⠀⠀⠀⢀⣀⣤⣄⡀⠀⠀⠀⠀⠀⠀⠙⠳⢦⣄⠙⢦⡀⠀⠀⠀⠀
+    ⠀⠀⠀⠸⢿⣧⡈⠙⠳⢦⣤⣤⣄⡀⠀⠀⠀⠉⠙⢦⡙⢦⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠉⠙⠓⠶⢬⠽⢿⣻⣿⣦⣄⡀⠀⠀⠀⠙⠳⢧⡀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠳⢦⣈⠙⢿⣿⣿⣶⣤⣄⣀⣀⠙⢦
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠛⠳⢦⣍⠙⠿⢿⣿⣿⣿⣷⣄
+    ⠀⠀⠀⠀⠀⠀⠀⢀⡴⠋⠙⠛⠿⠶⣤⣤⣉⠙⢦⣀⠀⠙⢿⣿⣿
+    ⠀⠀⠀⠀⠀⢀⣴⠋⠀⠀⠀⠀⠀⠀⠀⠈⠙⠳⢦⣙⠳⠶⠤⢌⣛
+    ⠀⠀⠀⣠⠞⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢧⣀⣀⣼⣿
+    ⢀⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⢻⣿
+    """
 
-    # Sidebar navigation
-    page = st.sidebar.radio("Choose a feature", ["Home", "Get Train Between Stations", "Get Live Train Status", "Get PNR Status", "Search Alternate Routes"])
+    # Display the ASCII art with monospaced formatting
+    st.markdown(tiger_ascii)
+    # st.image('./utils/imagebg.jpg')
 
-    # Display the content based on the selected page
-    if page == "Home":
-        st.header("Welcome to the Train Information Portal")
-        st.write("Select a feature from the sidebar to get started.")
-    elif page == "Get Train Between Stations":
+    st.sidebar.title("Train Information System")
+    st.sidebar.markdown("""
+        <style>
+        .sidebar .sidebar-content {
+            background-color: #f0f2f6;
+            padding: 20px;
+        }
+        .sidebar .sidebar-content h1 {
+            color: #4CAF50;
+        }
+        .sidebar .sidebar-content p {
+            color: #333;
+        }
+        .sidebar .sidebar-content .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+            text-align: center;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .sidebar .sidebar-content .button:hover {
+            background-color: #45a049;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    st.sidebar.header("Navigation")
+    if st.sidebar.button("Get Train Between Stations", key="get_train_between_stations"):
         get_train_between_stations_page()
-    elif page == "Get Live Train Status":
+    if st.sidebar.button("Get Live Train Status", key="get_live_train_status"):
         get_live_train_status()
-    elif page == "Get PNR Status":
+    if st.sidebar.button("Get PNR Status", key="get_pnr_status"):
         get_pnr_status()
-    elif page == "Search Alternate Routes":
+    if st.sidebar.button("Search Alternate Routes", key="search_alternate_routes"):
         train_search_page()
 
 # Run the app

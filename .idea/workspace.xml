@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03f39926-3794-40d5-b3b6-8556ad4c7497" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/features/debugPath.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/mergedDataTrain.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/searchAlternate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mergedDataTrain.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="03f39926-3794-40d5-b3b6-8556ad4c7497" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/utils/imagebg.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/routeFinder.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/routeFinder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/searchAlternate.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/searchAlternate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +41,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\HP\PycharmProjects\hackcbs" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HP\PycharmProjects\hackcbs\utils" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -63,6 +61,19 @@
       <option name="presentableId" value="Default" />
       <updated>1731195814235</updated>
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <option name="closed" value="true" />
+      <created>1731202317918</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731202317918</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
