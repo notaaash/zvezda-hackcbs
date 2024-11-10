@@ -5,6 +5,7 @@ import requests
 import os
 from dotenv import load_dotenv
 from datetime import datetime
+from features.searchAlternate import train_search_page
 
 # # Example of calling the function in app.py
 # # Streamlit UI for user input
@@ -68,12 +69,15 @@ def get_pnr_status():
         # Example PNR status (replace with real API calls or logic)
         st.write("Your PNR is confirmed. Seat: 10A")
 
+def search_alternate():
+    train_search_page()
+
 # Main App Logic
 def main():
     st.title("zvezda portal")
 
     # Sidebar navigation
-    page = st.sidebar.radio("Choose a feature", ["Home", "Get Train Between Stations", "Get Live Train Status", "Get PNR Status"])
+    page = st.sidebar.radio("Choose a feature", ["Home", "Get Train Between Stations", "Get Live Train Status", "Get PNR Status", "Search Alternate Routes"])
 
     # Display the content based on the selected page
     if page == "Home":
@@ -85,6 +89,8 @@ def main():
         get_live_train_status()
     elif page == "Get PNR Status":
         get_pnr_status()
+    elif page == "Search Alternate Routes":
+        train_search_page()
 
 # Run the app
 if __name__ == "__main__":

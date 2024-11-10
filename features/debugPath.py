@@ -4,15 +4,23 @@ import os
 
 # Get the current working directory
 current_directory = os.getcwd()
+print(f"Current working directory: {current_directory}")
 
 # Construct the full path to the file
-file_path = os.path.join(current_directory, "mergedDataTrain.csv")
+file_path = os.path.join(current_directory, "features", "mergeddata.csv")
+print(f"Constructed file path: {file_path}")
+
+# Check if the file exists
+if not os.path.isfile(file_path):
+    print(f"File not found: {file_path}")
+else:
+    print(f"File found: {file_path}")
 
 # Step 1: Load the file and create the graph
 def load_station_data(merged_data_train):
     station_graph = defaultdict(list)
 
-    with open(file_path, mode='r', encoding='utf-8') as file:
+    with open(file_path, mode='r') as file:
         reader = csv.reader(file)
         for row in reader:
             station = row[0]  # The first column is the station code
@@ -27,13 +35,13 @@ def load_station_data(merged_data_train):
 
     return station_graph
 
-# Step 2: Identify junctions
-def find_junctions(station_graph):
-    junctions = [station for station, connections in station_graph.items() if len(connections) >= 6]
-    return junctions
 
-# Step 3: Implement the route-finding logic using BFS
+# Step 2: Implement the route-finding logic using BFS
 def find_route(start, end, station_graph):
+    # Direct route if it exists (bidirectional check)
+    if end in station_graph[start]:
+        return [start, end]
+
     # Use BFS to find paths through junctions
     queue = deque([(start, [start])])  # Each element is (current_station, path_so_far)
     visited = set([start])  # Keep track of visited stations to avoid cycles
@@ -55,20 +63,13 @@ def find_route(start, end, station_graph):
     # If no route is found
     return None
 
-# Step 4: Test the code
+
+# Step 3: Test the code
 # Path to your station file
 station_graph = load_station_data(file_path)
 
-def get_junction_list():
-    return junctions
-
-# Find junctions
-junctions = find_junctions(station_graph)
-print(f"Junctions: {junctions}")
-
-# Test route finding
-start_station = "RKMP"
-end_station = "NZM"
+start_station = "A"
+end_station = "G"
 route = find_route(start_station, end_station, station_graph)
 
 if route:
