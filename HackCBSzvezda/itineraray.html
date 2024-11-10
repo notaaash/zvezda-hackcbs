@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Spot Selection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 700px;
+            margin: 20px;
+        }
+
+        .spots-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .spot-button {
+            font-size: 1.1em;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            width: 45%;
+        }
+
+        .spot-button:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .spot-button.selected {
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: white;
+        }
+
+        .spot-button.selected:hover {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 15px;
+            margin-top: 20px;
+            width: 100%;
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .result {
+            background-color: #fff;
+            color: #333;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .result span {
+            color: #4CAF50;
+        }
+
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .path-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .path-info span {
+            margin: 0 10px;
+        }
+
+        .arrow {
+            font-size: 2em;
+            color: #4CAF50;
+        }
+
+        .distance {
+            font-size: 1.1em;
+            color: #ff5722;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Tourist Spot Selection</h1>
+
+    <div class="container">
+        <div class="spots-container">
+            <button class="spot-button" id="spot-1">Red Fort</button>
+            <button class="spot-button" id="spot-2">India Gate</button>
+            <button class="spot-button" id="spot-3">Humayun's Tomb</button>
+            <button class="spot-button" id="spot-4">Lotus Temple</button>
+            <button class="spot-button" id="spot-5">Akshardham</button>
+            <button class="spot-button" id="spot-6">National Museum</button>
+            <button class="spot-button" id="spot-7">Qutab Minar</button>
+            <button class="spot-button" id="spot-8">Rastrapati Bhavan</button>
+            <button class="spot-button" id="spot-9">Rajghat Memorial</button>
+            <button class="spot-button" id="spot-10">Agrasen ki Baoli</button>
+        </div>
+        <button onclick="calculateResult()">Calculate Optimal Path</button>
+    </div>
+
+    <div class="result" id="result" style="display:none;">
+        <h3>Calculated Shortest Path and Distances</h3>
+        <p>Optimal Path: <span id="optimal-path"></span></p>
+        <p>Total Distance: <span id="total-distance"></span> km</p>
+    </div>
+
+    <div id="path-info" class="path-info"></div>
+
+    <div id="map"></div>
+
+    <script>
+        // Store selected spots
+        let selectedSpots = [];
+
+        // Spot names and distance matrix
+        const spotNames = {
+            1: "Red Fort",
+            2: "India Gate",
+            3: "Humayun's Tomb",
+            4: "Lotus Temple",
+            5: "Akshardham",
+            6: "National Museum",
+            7: "Qutab Minar",
+            8: "Rastrapati Bhavan",
+            9: "Rajghat Memorial",
+            10: "Agrasen ki Baoli"
+        };
+
+        const distances = [
+            { start: 1, end: 2, distance: 5.7045 },
+            { start: 1, end: 3, distance: 7.0454 },
+            { start: 1, end: 4, distance: 11.5339 },
+            { start: 1, end: 5, distance: 5.9450 },
+            { start: 1, end: 6, distance: 5.0049 },
+            { start: 1, end: 7, distance: 15.6790 },
+            { start: 1, end: 8, distance: 6.2684 },
+            { start: 1, end: 9, distance: 4.6618 },
+            { start: 1, end: 10, distance: 3.4456 },
+            { start: 2, end: 3, distance: 3.0347 },
+            { start: 2, end: 4, distance: 6.9015 },
+            { start: 2, end: 5, distance: 5.2436 },
+            { start: 2, end: 6, distance: 0.7706 },
+            { start: 2, end: 7, distance: 9.9818 },
+            { start: 2, end: 8, distance: 2.5353 },
+            { start: 2, end: 9, distance: 3.6073 },
+            { start: 2, end: 10, distance: 5.6336 },
+            { start: 3, end: 4, distance: 4.2953 },
+            { start: 3, end: 5, distance: 5.6795 },
+            { start: 3, end: 6, distance: 3.2654 },
+            { start: 3, end: 7, distance: 9.4564 },
+            { start: 3, end: 8, distance: 7.0935 },
+            { start: 3, end: 9, distance: 7.0676 },
+            { start: 3, end: 10, distance: 6.2455 },
+            { start: 4, end: 5, distance: 2.7087 },
+            { start: 4, end: 6, distance: 6.1241 },
+            { start: 4, end: 7, distance: 11.6646 },
+            { start: 4, end: 8, distance: 4.9578 },
+            { start: 4, end: 9, distance: 5.7786 },
+            { start: 4, end: 10, distance: 8.6899 },
+        ];
+
+        // Add spot to selected spots
+        document.querySelectorAll('.spot-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const spotId = parseInt(this.id.split('-')[1]);
+                if (selectedSpots.includes(spotId)) {
+                    selectedSpots = selectedSpots.filter(spot => spot !== spotId);
+                    this.classList.remove('selected');
+                } else {
+                    selectedSpots.push(spotId);
+                    this.classList.add('selected');
+                }
+            });
+        });
+
+        // Calculate the optimal path and total distance
+        function calculateResult() {
+            let path = selectedSpots;
+            let totalDistance = 0;
+
+            // Calculate total distance for selected spots
+            let pathDetails = [];
+            for (let i = 0; i < path.length - 1; i++) {
+                let start = path[i];
+                let end = path[i + 1];
+                let distance = distances.find(d => (d.start === start && d.end === end) || (d.start === end && d.end === start));
+                if (distance) {
+                    totalDistance += distance.distance;
+                    pathDetails.push({
+                        from: spotNames[start],
+                        to: spotNames[end],
+                        distance: distance.distance.toFixed(2)
+                    });
+                }
+            }
+
+            // Update result display
+            document.getElementById('optimal-path').textContent = pathDetails.map(detail => `${detail.from} → ${detail.to}`).join(" → ");
+
+            document.getElementById('total-distance').textContent = totalDistance.toFixed(2);
+
+            document.getElementById('result').style.display = "block";
+
+            let pathInfoDiv = document.getElementById('path-info');
+            pathInfoDiv.innerHTML = "";
+            pathDetails.forEach(detail => {
+                let info = document.createElement('div');
+                info.innerHTML = `<span>${detail.from}</span><span class="arrow">→</span> <span>${detail.to}</span> <br> <span class="distance">${detail.distance} km</span>`;
+                pathInfoDiv.appendChild(info);
+            });
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Itinerary</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"> <!-- AOS CSS -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 200;
+        }
+
+        .feature-description {
+            text-align: justify;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 20px auto;
+            background-color: #1E90FF;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #007bff;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+            width: 500px;
+        }
+
+        .feature-image {
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .content {
+            font-size: 25px;
+            font-weight: 100;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: justify;
+            justify-items: center ;
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(to bottom, #bbdefb, #c8e6c9);">
+
+    <div class="container">
+        <div class="header">
+            <h1>Discover the Perfect Itinerary</h1>
+        </div>
+
+        <div class="content" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-description">
+                <p>
+                    Planning your trip itinerary has never been this easy. Our platform provides curated itineraries tailored to your interests and travel style. From historical landmarks and hidden gems to popular tourist spots, we help you discover the best activities and places to visit at your chosen destination.
+                </p>
+            </div>
+
+            <div class="feature-description">
+                <p>
+                    Whether you’re looking for an adventurous getaway or a relaxing retreat, our itinerary planner ensures you make the most of your trip. Explore new destinations, experience the culture, and immerse yourself in the local charm. Let us guide you to an unforgettable travel experience with our expertly crafted itineraries.
+                </p>
+            </div>
+
+            <div class="image-container">
+                <img src="itin.jpeg" alt="Discover Itinerary" class="feature-image"> <!-- Replace with your image source -->
+            </div>
+
+            <!-- Button wrapped with content for synchronized animation -->
+            <a href="itineraray.html" class="button">Explore Itineraries Now</a>
+        </div>
+    </div>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS library
+        AOS.init({
+            duration: 1000, // Animation duration
+            easing: 'ease-in-out', // Animation easing
+            once: true // Animation happens once
+        });
+    </script>
+
+</body>
+</html>

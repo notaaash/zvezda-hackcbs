@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tickets</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"> <!-- AOS CSS -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 200;
+        }
+
+        .feature-description {
+            text-align: justify;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 20px auto;
+            background-color: #1E90FF;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #007bff;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .feature-image {
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .content {
+            font-size: 25px;
+            font-weight: 100;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: justify;
+            justify-items: center ;
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(to bottom, #bbdefb, #c8e6c9);">
+
+    <div class="container">
+        <div class="header">
+            <h1>Book Tickets Seamlessly</h1>
+        </div>
+
+        <div class="content" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-description">
+                <p>
+                    Booking your tickets has never been easier. With our user-friendly platform, you can instantly book tickets for trains, flights, or buses in just a few simple steps. Skip the hassle of long queues and complicated booking processes. Our system ensures that you find the best options for your journey, so you can focus on enjoying the experience rather than stressing over logistics.
+                </p>
+            </div>
+
+            <div class="feature-description">
+                <p>
+                    Whether you're traveling for business or leisure, our seamless booking experience ensures that you get the most out of your trip. From selecting your preferred transport options to securely paying for your tickets, we’ve designed every step of the process to be fast, easy, and stress-free. Ready to book your next adventure? Let’s make it happen!
+                </p>
+            </div>
+
+            <div class="image-container">
+                <img src="bookticket.png" alt="Booking Tickets" class="feature-image"> <!-- Replace with your image source -->
+            </div>
+
+            <!-- Button wrapped with content for synchronized animation -->
+            <a href="https://zvezda-hackcbs.onrender.com/" class="button">Book Your Tickets Now</a>
+        </div>
+    </div>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS library
+        AOS.init({
+            duration: 1000, // Animation duration
+            easing: 'ease-in-out', // Animation easing
+            once: true // Animation happens once
+        });
+    </script>
+
+</body>
+</html>
